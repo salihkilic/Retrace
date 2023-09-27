@@ -1,5 +1,4 @@
 class Item:
-    name: str
 
     def __init__(self, name, description: str):
         self.description = description

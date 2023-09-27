@@ -2,14 +2,20 @@ from abc import abstractmethod, ABC
 from GameLogic.Inventory import Inventory
 
 
-# Todo Let's create an enum of locations:strings and their sublocations so we can pass them easily
-
-
 class BaseLocation(ABC):
-    sublocations: list
 
-    def __init__(self):
+    def __init__(self, actions=None,
+                 sublocations: list = None,
+                 adjacent_locations: list = None):
         self.location_inventory = Inventory()
+        # Sublocations are other locations, part of this location
+        self.sublocations: list = sublocations if sublocations else []
+        self.adjacent_locations: list = adjacent_locations if adjacent_locations else []
+        self.actions = actions if actions else []
+
+    def available_actions(self, player):
+        # Return the list of actions that the player can perform in this location
+        return [action for action in self.actions if action.player_can_perform(player)]
 
     @abstractmethod
     def room_description(self):
@@ -50,10 +56,14 @@ class BaseLocation(ABC):
         else:
             return self.room_description()
 
-    # TODO
-    # Description of travel options, "adjacent locations"
-    # Function that describes actions that can be taken and removes them from the list of actions to be taken if needed
-    # The action should also understand whether an item is needed to perform it,
-    # but the game manager does the check for it
 
-    # Later, the scene manager uses these actions to present them as buttons
+class LocationAction:
+    def __init__(self, description, conditions: list = None):
+        self.description = description
+        self.conditions = conditions  # A lambda function or callable to check if the action can be performed
+
+    def player_can_perform(self, player):
+        if not self.conditions:
+            return True
+        else:
+            return all(condition(player) for condition in self.conditions)

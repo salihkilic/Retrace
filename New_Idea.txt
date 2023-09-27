@@ -1,0 +1,47 @@
+Everything in the world is an interactable. You can (potentially):
+If you make everything have a default negative value, you only have to script whatever is possible in that situation.
+
+Locations have three parts:
+    - A description of the location
+    - A description of sublocations/objects of interest
+    - Items
+
+The game starts with all locations loaded fresh, and we begin at the first location.
+The game state changes when we move locations or interact with the objects/items
+
+
+The game engine does the following things:
+
+- Change the header to the location we are at
+- Give a description of the location
+- List the objects
+- List the items that are here
+- List of actions to be taken:
+    - Item:
+        - Inspect it
+        - Take it
+        - Use it
+    - Object:
+        - Inspect it (Change the description or state depending on situation)
+        - Interact with it (give the player a hint an item can be used if needed)
+        - Use Item on it (Change its state)
+    - Exits (to adjacent locations):
+        - Enter it (if open)
+        - Open it (with item if needed)
+- A message about the last action taken
+- Takes user input/command as text
+    - Redraws screen
+    - Takes input
+
+
+Things to do:
+- Create Item with commands from above
+- Create Object with commands from above
+- Create Exit with commands from above
+- Create a test location with two objects and two items and two exits
+- Create a UI that can display the above and ask for input
+- Create interactions with the items, objects and exits by converting the input to commands/function calls
+
+Things to think about:
+- Whenever objects can change states, we define those variables and use them as condition checkers for the state of the object
+    - So if we have a button on an object, the INTERACT will depend on the state of that variable

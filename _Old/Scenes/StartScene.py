@@ -1,8 +1,8 @@
 import pygame
 import math
-from Scenes.BaseScene import BaseScene
-from Scenes.LocationScene import LocationScene
+from _Old.Scenes.BaseScene import BaseScene
 from Scenes.HelperFunctions import Button
+from Scenes.GameEvents import game_start
 
 
 class StartScene(BaseScene):
@@ -21,7 +21,7 @@ class StartScene(BaseScene):
         self.quit_button = Button('Quit', 300, 570, 200, 60, (200, 50, 50), self.quit_game)
 
     def play_game(self):
-        pass
+        game_start()
 
     def quit_game(self):
         pygame.quit()

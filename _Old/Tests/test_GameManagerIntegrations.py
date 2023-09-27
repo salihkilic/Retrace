@@ -8,8 +8,7 @@ class GameManagerIntegrations(unittest.TestCase):
     manager: Manager
 
     def test_if_game_manager_exists(self):
-        switch_scene_mock = "MOCK SCENE SWITCHER"
-        self.manager = Manager(switch_scene_mock)
+        self.manager = Manager()
         self.assertIsInstance(self.manager, Manager)
 
 
