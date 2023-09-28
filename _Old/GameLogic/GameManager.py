@@ -17,5 +17,5 @@ class Manager:
             pass
 
         # Load first location into scene, the location itself leads to new locations
-        # TODO Make functions for the different actions a player might take: take item, use item, move to location and report that to the UI
+        # Make functions for the different actions a player might take: take item, use item, move to location and report that to the UI
 

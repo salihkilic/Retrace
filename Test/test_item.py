@@ -1,5 +1,5 @@
 from unittest import TestCase
 
 
-class TestLocation(TestCase):
+class TestItem(TestCase):
     pass
