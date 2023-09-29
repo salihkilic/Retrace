@@ -1,4 +1,4 @@
-from Engine.objects import Item
+from Engine.object import Item
 
 
 class Player:

@@ -1,14 +1,22 @@
 from typing import Optional
-from Engine.objects import Item
+from Engine.object import Item, test_poi, Poi
 
 
 class Location:
-    def __init__(self, name: str, description: str, pois: Optional[list], items: Optional[Item], location_ascii: str):
+    def __init__(self, name: str,
+                 description: str,
+                 pois: Optional[list[Poi]],
+                 items: Optional[list[Item]],
+                 location_ascii: str,
+                 needs_item_name: Optional[str] = None,  # The name of the needed item
+                 locked_reason: str = ""):
         self.name = name
         self.description = description
-        self.pois = pois
-        self.items = items
+        self.pois = pois if pois else []
+        self.items = items if items else []
         self.location_ascii = location_ascii
+        self.needs_item_name = needs_item_name if needs_item_name else None
+        self.locked_reason = locked_reason
 
 
 class Map:
@@ -26,7 +34,7 @@ LOCATIONS
 """
 location1 = Location("Square",
                      "A small square with houses",
-                     None,
+                     [test_poi],
                      None,
                      "$$$$$$$$$$\n"
                      "$$$$$$$$$$\n"
@@ -42,7 +50,9 @@ location2 = Location("House",
                      "$$$$$$$$$$\n"
                      "$$$$L2$$$$\n"
                      "$$$$$$$$$$\n"
-                     "$$$$$$$$$$\n")
+                     "$$$$$$$$$$\n",
+                     needs_item_name="strange triangular hat",
+                     locked_reason="You need a weirdly shaped hat to enter")
 
 location3 = Location("Laboratory",
                      "A lab where they steal memories",
