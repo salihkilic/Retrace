@@ -34,7 +34,7 @@ class Item(Interactable):
             response_string = (f"You check the [bold green]{self.name}[/bold green] and "
                                f"you also found a map to: [bold green]{self.hidden_map.name}! [/bold green]")
         else:
-            response_string = (f"You see a [bold green]{self.name}[/bold green], {self.description}. "
+            response_string = (f"You check the [bold green]{self.name}[/bold green], {self.description}. "
                                f"It doesn't seem like you can do anything with it.")
         return response_string
 
@@ -49,8 +49,8 @@ class Poi(Interactable):
     def interact(self, location, discovered_maps: list) -> str:
         if self.hidden_item:
             location.items.append(self.hidden_item)
-            response_string = (f"You see {self.description}. [bold green] You also found a {self.hidden_item.name}! ["
-                               f"/bold green]")
+            response_string = (f"You see {self.description}. You also notice a[bold green] {self.hidden_item.name}! ["
+                               f"/bold green] close to it!")
             self.hidden_item = None
         elif self.hidden_map:
             response_string = (f"You see {self.description}."

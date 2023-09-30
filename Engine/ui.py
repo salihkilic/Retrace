@@ -1,6 +1,5 @@
 from rich.align import Align
 from rich.layout import Layout
-from rich.padding import Padding
 from rich.panel import Panel
 from rich import print
 
@@ -26,7 +25,7 @@ class GameUI:
 
         # Split bottom into four columns
         (self.layout["bottom"].split_row(
-            Layout(self.create_user_actions_panel(), name="useractionP"),
+            Layout(self.create_user_actions_panel(), name="user-actionP"),
             Layout(self.create_poi_panel(location.pois), name="poiP"),
             Layout(self.create_item_panel(location.items), name="itemP"),
             Layout(self.create_inventory_panel(player.inventory), name="inventoryP")))
@@ -84,12 +83,8 @@ class GameUI:
             item_string = "You don't have anything in your inventory yet."
         return Panel(Align(item_string, align="center", vertical="middle"), title="Inventory")
 
-
     def create_header_panel(self) -> Panel:
         header_logo = """[bold cyan]╦═╗┌─┐┌┬┐┬─┐┌─┐┌─┐┌─┐       ╔═╗┌─┐┬─┐┌─┐┌─┐┌┬┐┌┬┐┌─┐┌┐┌  ╔═╗┌─┐┌┬┐┬ ┬┌─┐
 ╠╦╝├┤  │ ├┬┘├─┤│  ├┤   ───  ╠╣ │ │├┬┘│ ┬│ │ │  │ ├┤ │││  ╠═╝├─┤ │ ├─┤└─┐
 ╩╚═└─┘ ┴ ┴└─┴ ┴└─┘└─┘       ╚  └─┘┴└─└─┘└─┘ ┴  ┴ └─┘┘└┘  ╩  ┴ ┴ ┴ ┴ ┴└─┘[/bold cyan]"""
         return Panel(Align(header_logo, align="center", vertical="middle"))
-
-
-
