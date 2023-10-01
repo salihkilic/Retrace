@@ -36,7 +36,7 @@ class Item(Interactable):
                                f"You found a map to: [bold green]{self.hidden_map.name}! [/bold green]")
             self.hidden_map = None
         else:
-            response_string = (f"You check the [bold green]{self.name}[/bold green], {self.description}. "
+            response_string = (f"You check the [bold green]{self.name}[/bold green], {self.description} "
                                f"[bold red]It doesn't seem like you can do anything else with it.[/bold red]")
         return response_string
 
@@ -52,7 +52,7 @@ class Poi(Interactable):
         if self.hidden_item:
             location.items.append(self.hidden_item)
             response_string = (f"{self.description}. You also notice a[bold green] {self.hidden_item.name}! ["
-                               f"/bold green] close to it!")
+                               f"/bold green] close by!")
             self.hidden_item = None
         elif self.hidden_map:
             discovered_maps.append(self.hidden_map)

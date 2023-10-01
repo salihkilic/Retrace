@@ -54,6 +54,7 @@ class GameEngine:
         self.start_screen.update_layout()
         input("Press enter to continue...")
 
+    # noinspection PyBroadException
     def request_input_int(self, msg: str, choice_amount: int):
         try:
             usr_input = int(input(msg))
@@ -118,7 +119,7 @@ class GameEngine:
         # Check if location is available / not locked by item
         if target_location.needs_item_name:
             if not self.check_inventory_by_name(target_location.needs_item_name):
-                return (f"You see {target_location.description} \n\n"
+                return (f"{target_location.description} \n\n"
                         f"You can't access this location because: [bold red]{target_location.locked_reason}[/bold red]")
             # If they have the item, tell the user they used it to get in
             self.current_location = target_location
@@ -162,7 +163,6 @@ class GameEngine:
             return "You have no items to interact with. Find some first!"
         if len(self.player.inventory) == 1:
             return self.player.inventory[0].interact(self.current_location, self.discovered_maps)
-        # TODO If inventory contains the game winning item (memory core), go to end screen!
         else:
             item_pick = self.request_input_int(
                 "Which item from your inventory do you want to interact with? (Pick the number): ",
@@ -221,9 +221,9 @@ class GameEngine:
         items.military_keycard.hidden_map = locations.mars
 
         # Mars
-        # TODO Robot Remote -> Robot Center
+        # Robot Remote -> Robot Center
         locations.mars.locations[1].pois[2].hidden_item = items.robot_remote
-        # TODO Labs skeleton key -> forget labs
+        # Labs skeleton key -> forget labs
         locations.mars.locations[2].pois[1].hidden_item = items.labs_keycard
 
     def set_locations_needed_items_for_visit(self):
@@ -253,11 +253,11 @@ class GameEngine:
         locations.mars.locations[1].needs_item_name = items.military_keycard.name
         locations.mars.locations[1].locked_reason = ("[bold red]The military base has a secured entrance. You will "
                                                      "need [/bold red]")
-        # TODO Forget Inc -> Robot remote
+        # Forget Inc -> Robot remote
         locations.mars.locations[2].needs_item_name = items.robot_remote.name
         locations.mars.locations[2].locked_reason = ("[bold red]A robot is defending the entrance and attacking "
                                                      "anyone that comes closeby and you narrowly escape! You will "
-                                                     "need some way of disableing or destroying the robot.[/bold red]")
+                                                     "need some way of disabling or destroying the robot.[/bold red]")
 
     def draw_end_scene(self):
         self.clear_screen()
@@ -267,7 +267,3 @@ class GameEngine:
              "\n Player exit from game"
              "\n  Thanks for playing! "
              "\n ---------------------")
-
-# TODO Do location items stick around when you move?
-# TODO It would be really neat to have a game-start screen
-# TODO Music? Based on location even?!?!

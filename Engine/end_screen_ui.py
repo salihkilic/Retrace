@@ -24,7 +24,7 @@ class EndScreenUI:
     def create_user_input_panel(self) -> Panel:
         intro_text = """    
         
-        Amidst the dilapidated cities and desolate landscapes, your journey leads you to a chilling revelation: the [bold red]Memory Extractor[/bold red]. A device designed to erase the pain of the past. The scarred world around tells a heart-wrenching tale of chaos and downfall. Solar flares eradicated the core of our civilization, leaving behind a lawless realm where looters and warring nations reigned supreme.
+Amidst the dilapidated cities and desolate landscapes, your journey leads you to a chilling revelation: the [bold red]Memory Extractor[/bold red]. A device designed to erase the pain of the past. The scarred world around tells a heart-wrenching tale of chaos and downfall. Solar flares eradicated the core of our civilization, leaving behind a lawless realm where looters and warring nations reigned supreme.
 
 The once vibrant tapestry of human life, now appears faded. The streets, once bustling with laughter and love, echo with an eerie silence. You've searched far and wide, hoping against hope, but it appears you're the last remnant of a bygone era.
 

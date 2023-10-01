@@ -38,23 +38,24 @@ class GameUI:
         print(self.layout)
 
     def create_location_panel(self, location_ascii) -> Panel:
-        return Panel(Align(location_ascii, align="center", vertical="middle"), title="Location")
+        return Panel(Align(location_ascii, align="center", vertical="middle"), title="Location", border_style="orange1")
 
     def create_map_panel(self, map_ascii) -> Panel:
-        return Panel(Align(map_ascii, align="center", vertical="middle"), title="Map")
+        return Panel(Align(map_ascii, align="center", vertical="middle"), title="Map", border_style="orange1")
 
     def create_game_message_panel(self, msg) -> Panel:
-        return Panel(Align(f"[bold cyan]{msg}[/bold cyan]", align="center", vertical="middle"))
+        return Panel(Align(f"[bold cyan]{msg}[/bold cyan]", align="center", vertical="middle"),
+                     border_style="cyan")
 
     def create_user_actions_panel(self) -> Panel:
         return Panel(Align("""
-        1) Go to location on map
-        2) Travel to different map
-        3) Interact with an item
-        4) Pick up an item
-        5) Interact with a POI
-        6) Exit Game
-        """, align="left", vertical="middle"), title="Actions")
+        [bold orange1]1) Go to location on map[/bold orange1]
+        [bold orange1]2) Travel to different map[/bold orange1]
+        [bold green]3) Interact with an item[/bold green]
+        [bold green]4) Pick up an item[/bold green]
+        [bold orange1]5) Interact with a POI[/bold orange1]
+        [bold bright_red]6) Exit Game[/bold bright_red]
+        """, align="left", vertical="middle"), title="Actions", border_style="bright_red")
 
     def create_poi_panel(self, pois: list[Poi]) -> Panel:
         if pois:
@@ -63,7 +64,8 @@ class GameUI:
                 poi_string += f"{num + 1}) {poi.name} \n"
         else:
             poi_string = "There are no points of interest at this location."
-        return Panel(Align(poi_string, align="center", vertical="middle"), title="Points of Interest")
+        return Panel(Align(poi_string, align="center", vertical="middle"), title="Points of Interest",
+                     border_style="orange1")
 
     def create_item_panel(self, items: list[Item]) -> Panel:
         if items:
@@ -72,7 +74,8 @@ class GameUI:
                 item_string += f"{num + 1}) {item.name} \n"
         else:
             item_string = "You haven't found any noteable items at this location."
-        return Panel(Align(item_string, align="center", vertical="middle"), title="Location Items")
+        return Panel(Align(item_string, align="center", vertical="middle"), title="Location Items",
+                     border_style="green")
 
     def create_inventory_panel(self, inventory: list[Item]) -> Panel:
         if inventory:
@@ -81,10 +84,11 @@ class GameUI:
                 item_string += f"{num + 1}) {item.name} \n"
         else:
             item_string = "You don't have anything in your inventory yet."
-        return Panel(Align(item_string, align="center", vertical="middle"), title="Inventory")
+        return Panel(Align(item_string, align="center", vertical="middle"), title="Inventory",
+                     border_style="green")
 
     def create_header_panel(self) -> Panel:
         header_logo = """[bold cyan]╦═╗┌─┐┌┬┐┬─┐┌─┐┌─┐┌─┐       ╔═╗┌─┐┬─┐┌─┐┌─┐┌┬┐┌┬┐┌─┐┌┐┌  ╔═╗┌─┐┌┬┐┬ ┬┌─┐
 ╠╦╝├┤  │ ├┬┘├─┤│  ├┤   ───  ╠╣ │ │├┬┘│ ┬│ │ │  │ ├┤ │││  ╠═╝├─┤ │ ├─┤└─┐
 ╩╚═└─┘ ┴ ┴└─┴ ┴└─┘└─┘       ╚  └─┘┴└─└─┘└─┘ ┴  ┴ └─┘┘└┘  ╩  ┴ ┴ ┴ ┴ ┴└─┘[/bold cyan]"""
-        return Panel(Align(header_logo, align="center", vertical="middle"))
+        return Panel(Align(header_logo, align="center", vertical="middle"), border_style="cyan")
