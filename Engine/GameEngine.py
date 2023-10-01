@@ -25,11 +25,10 @@ class GameEngine:
         self.end_screen = EndScreenUI()
         self.ui = GameUI()
         self.player = Player()
-        self.background_music = [simpleaudio.WaveObject.from_wave_file("Assets/music.wav"),
+        self.background_music = [simpleaudio.WaveObject.from_wave_file("Assets/music1.wav"),
                                  simpleaudio.WaveObject.from_wave_file("Assets/music2.wav"),
                                  simpleaudio.WaveObject.from_wave_file("Assets/music3.wav"),
-                                 simpleaudio.WaveObject.from_wave_file("Assets/music4.wav"),
-                                 simpleaudio.WaveObject.from_wave_file("Assets/music5.wav")]
+                                 simpleaudio.WaveObject.from_wave_file("Assets/music4.wav")]
         self.music_player = None
 
     def run(self):
