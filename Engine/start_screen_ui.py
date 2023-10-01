@@ -20,8 +20,7 @@ class StartScreenUI:
         print(self.layout)
 
     def create_user_input_panel(self) -> Panel:
-        intro_text = """
-        You awaken, [bold red]head throbbing[/bold red], in a dimly lit room. [bold red]Panic[/bold red] sets in briefly as nothing seems familiar. Blinking, you push yourself up, trying to recall the [bold red]memories[/bold red] that should tether you to [bold cyan]reality[/bold cyan]. But they’re gone. All of them. There's an unsettling weight to the silence, devoid of the hum of city life or the distant chatter of people.
+        intro_text = """You awaken, [bold red]head throbbing[/bold red], in a dimly lit room. [bold red]Panic[/bold red] sets in briefly as nothing seems familiar. Blinking, you push yourself up, trying to recall the [bold red]memories[/bold red] that should tether you to [bold cyan]reality[/bold cyan]. But they’re gone. All of them. There's an unsettling weight to the silence, devoid of the hum of city life or the distant chatter of people.
 
 As you survey the room, disjointed sensations wash over you. The rustic wooden furniture, the worn-out rug underfoot, the faint aroma of old books — it's unfamiliar, and yet... something within whispers that you've been here before. Was this your home? But why does it feel like you're [bold red]intruding[/bold red]?
 
