@@ -1,1 +1,2 @@
-print(len([1]))
+- Location: House, the house of the player
+    - POI: Window, looking outside it's strange that '

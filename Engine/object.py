@@ -27,15 +27,17 @@ class Item(Interactable):
     def interact(self, location, discovered_maps: list) -> str:
         if self.hidden_item:
             location.items.append(self.hidden_item)
-            response_string = (f"You check the [bold green]{self.name}[/bold green] and"
-                               f" a [bold green]{self.hidden_item.name}[/bold green] falls on the ground!")
+            response_string = (f"You check the [bold green]{self.name}:[/bold green] {self.description}"
+                               f" [bold green]a [bold green]{self.hidden_item.name}[/bold green] falls on the ground!")
             self.hidden_item = None
         elif self.hidden_map:
-            response_string = (f"You check the [bold green]{self.name}[/bold green] and "
-                               f"you also found a map to: [bold green]{self.hidden_map.name}! [/bold green]")
+            discovered_maps.append(self.hidden_map)
+            response_string = (f"You check the [bold green]{self.name}:[/bold green] {self.description} "
+                               f"You found a map to: [bold green]{self.hidden_map.name}! [/bold green]")
+            self.hidden_map = None
         else:
             response_string = (f"You check the [bold green]{self.name}[/bold green], {self.description}. "
-                               f"It doesn't seem like you can do anything with it.")
+                               f"[bold red]It doesn't seem like you can do anything else with it.[/bold red]")
         return response_string
 
 
@@ -49,18 +51,14 @@ class Poi(Interactable):
     def interact(self, location, discovered_maps: list) -> str:
         if self.hidden_item:
             location.items.append(self.hidden_item)
-            response_string = (f"You see {self.description}. You also notice a[bold green] {self.hidden_item.name}! ["
+            response_string = (f"{self.description}. You also notice a[bold green] {self.hidden_item.name}! ["
                                f"/bold green] close to it!")
             self.hidden_item = None
         elif self.hidden_map:
-            response_string = (f"You see {self.description}."
+            discovered_maps.append(self.hidden_map)
+            response_string = (f"{self.description}."
                                f"[bold green] You also found a map to: {self.hidden_map.name}! [/bold green]")
         else:
-            response_string = f"You see {self.description}. It doesn't seem like you can do anything with it."
+            response_string = (f"{self.description}\n[bold red]It doesn't seem like you can do anything else with it.["
+                               f"bold red]")
         return response_string
-
-
-test_poi = Poi("TestPoi",
-               "statue of Napoleon Bonaparte",
-               Item("strange triangular hat",
-                    "it's probably Napoleon's hat!"))
